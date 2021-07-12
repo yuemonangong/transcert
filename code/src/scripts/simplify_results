@@ -1,0 +1,15 @@
+#! /bin/bash
+
+cur_dir=$1
+script='..../src/simplify_results.py' #filepath of simplify_results
+type='openssl'
+rm $cur_dir'/s_'$type'.txt'
+python $script 1 $cur_dir$type'.txt' >>$cur_dir'/s_'$type'.txt'
+
+type='polarssl'
+rm $cur_dir'/s_'$type'.txt'
+python $script 2 $cur_dir$type'.txt' >>$cur_dir'/s_'$type'.txt'
+
+type='gnutls'
+rm $cur_dir'/s_'$type'.txt'
+python $script 4 $cur_dir$type'.txt' >>$cur_dir'/s_'$type'.txt'
