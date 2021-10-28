@@ -12,14 +12,14 @@ transcert is a coverage-directed technique to much more effectively test real-wo
 
 **All rules below are extracted from RFC 5280 and displayed in `./data/RFC rules.xlsx`, which can be easily found with the indexes.**
 
-**The discrepancies triggered by transcert can be found in Section 6 with the indexes.**
+**The discrepancies triggered by transcert can be found in `Section 6` with the indexes.**
 1. **CG1**: The length of all certificate chains constructed by RFCcert is 2. Rules requiring longer certificate chain or self signed certificates cannot be tested.
    
    Example: 
    
-   a. **(Rule 44)** *"The DN MUST be unique for each subject entity certified by the one CA as defined by the issuer field."* Requires certificate chain with >= 3 length.
+   a. **(Rule 44)** `The DN MUST be unique for each subject entity certified by the one CA as defined by the issuer field.` Requires certificate chain with >= 3 length.
    
-   b. **(CC3)** *"Validators differently process self-issued certificates."* Requires certificate chain with = 1 length.
+   b. **(CC3)** `Validators differently process self-issued certificates.` Requires certificate chain with = 1 length.
 2. **CG2**: RFCcert constructs each certificate for a single rule, which is insufficient for testing complex situations involving multiple rules.
    
    Example: 
