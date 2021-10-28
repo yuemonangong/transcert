@@ -8,3 +8,14 @@ transcert is a coverage-directed technique to much more effectively test real-wo
 2. Generate a set of diverse certificates for differentially testing SSL/TLS implementations. See details in the `./code` folder.
 3. `./data` folder contains sample test cases for 11 reasons summarized in the paper, and the rules extracted from RFC 5280.
 
+## The examples of shortcomings stated in Section 5.5
+
+**All rules below are extracted from RFC 5280 and displayed in `./data/RFC rules.xlsx`, which can be easily found with the indexes.**
+**The discrepancies triggered by transcert can be found in Section 6 with the indexes.**
+1. CG1: The length of all certificate chains constructed by RFCcert is 2. Rules requiring longer certificate chain or self signed certificates cannot be tested.
+   Example: **(Rule 44)** *"The DN MUST be unique for each subject entity certified by the one CA as defined by the issuer field."* Requires certificate chain with >= 3 length.
+            **(CC3)** *"Validators differently process self-issued certificates."* Requires certificate chain with = 1 length.
+2. CG2: RFCcert constructs each certificate for a single rule, which is insufficient for testing complex situations involving multiple rules.
+   Example: **(Rule 19)** *"The issuer field MUST contain a non-empty distinguished name (DN)."* RFCcert directly changes the issuer of a certificate in the certificate chain to empty without triggering a discrepancy; transcert can construct a complex scenario for testing this rule through mutation, that is, when a certificate issuer in the certificate chain is set to be empty, the subject of the previous certificate is also set to be empty, which triggers the discrepancy **(CC2)**.
+            **(CC2)** *"Name chaining may or may not be performed between empty names."*
+3. 
