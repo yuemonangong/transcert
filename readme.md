@@ -8,7 +8,7 @@ transcert is a coverage-directed technique to much more effectively test real-wo
 2. Generate a set of diverse certificates for differentially testing SSL/TLS implementations. See details in the `./code` folder.
 3. `./data` folder contains sample test cases for 11 reasons summarized in the paper, and the rules extracted from RFC 5280.
 
-## The examples of shortcomings stated in Section 5.5
+## The examples of test scenarios stated in Section 5.5
 
 **All rules below are extracted from RFC 5280 and displayed in `./data/RFC rules.xlsx`, which can be easily found with the indexes.**
 
